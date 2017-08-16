@@ -11,13 +11,15 @@
 \alias{rrpn}
 \title{The Reversal Power Normal Distribution}
 \usage{
-drpn(x, lambda, mu = 0, sigma = 1)
+drpn(x, lambda = 1, mu = 0, sigma = 1, log = FALSE)
 
-prpn(q, lambda, mu = 0, sigma = 1)
+prpn(q, lambda = 1, mu = 0, sigma = 1, lower.tail = TRUE,
+  log.p = FALSE)
 
-qrpn(p, lambda, mu = 0, sigma = 1)
+qrpn(p, lambda = 1, mu = 0, sigma = 1, lower.tail = TRUE,
+  log.p = FALSE)
 
-rrpn(n, lambda, mu = 0, sigma = 1)
+rrpn(n, lambda = 1, mu = 0, sigma = 1)
 }
 \arguments{
 \item{x, q}{vector of quantiles.}
@@ -25,6 +27,10 @@ rrpn(n, lambda, mu = 0, sigma = 1)
 \item{lambda}{shape parameter.}
 
 \item{mu, sigma}{location and scale parameters.}
+
+\item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
+
+\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X \le x ]}, otherwise, P[X > x].}
 
 \item{p}{vector of probabilities.}
 
@@ -34,6 +40,13 @@ rrpn(n, lambda, mu = 0, sigma = 1)
 Density, distribution function,
 quantile function and random generation for
 the reversal power normal distribution with parameters mu, sigma and lambda.
+}
+\details{
+The reversal power Normal distribution has density
+
+\eqn{f\left(x\right)=\frac{\lambda}{\sigma}\left[\frac{e^{-\left(\frac{x-\mu}{\sigma}\right)^{2}}}{\sqrt{2\pi}}\right]\left[\Phi\left(-\left(\frac{x-\mu}{\sigma}\right)\right)\right]^{\lambda-1}}{f(x)=[\lambda/\sigma][exp(-((x-\mu)/\sigma)^2)/\sqrt(2\pi)][\Phi(-(x-\mu)/\sigma)]^(\lambda-1)},
+
+where \eqn{-\infty<\mu<\infty} is the location paramether, \eqn{\sigma^2>0} the scale parameter and \eqn{\lambda>0} the shape parameter.
 }
 \examples{
 drpn(1, 1, 3, 4)

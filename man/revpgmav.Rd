@@ -12,13 +12,15 @@
 \alias{rrpgmav}
 \title{The Reversal Power Gumbel of Maximum Value Distribution}
 \usage{
-drpgmav(x, lambda, mu = 0, sigma = 1)
+drpgmav(x, lambda = 1, mu = 0, sigma = 1, log = FALSE)
 
-prpgmav(q, lambda, mu = 0, sigma = 1)
+prpgmav(q, lambda = 1, mu = 0, sigma = 1, lower.tail = TRUE,
+  log.p = FALSE)
 
-qrpgmav(p, lambda, mu = 0, sigma = 1)
+qrpgmav(p, lambda = 1, mu = 0, sigma = 1, lower.tail = TRUE,
+  log.p = FALSE)
 
-rrpgmav(n, lambda, mu = 0, sigma = 1)
+rrpgmav(n, lambda = 1, mu = 0, sigma = 1)
 }
 \arguments{
 \item{x, q}{vector of quantiles.}
@@ -26,6 +28,10 @@ rrpgmav(n, lambda, mu = 0, sigma = 1)
 \item{lambda}{shape parameter.}
 
 \item{mu, sigma}{location and scale parameters.}
+
+\item{log, log.p}{logical; if TRUE, probabilities p are given as log(p).}
+
+\item{lower.tail}{logical; if TRUE (default), probabilities are \eqn{P[X \le x ]}, otherwise, P[X > x].}
 
 \item{p}{vector of probabilities.}
 
@@ -35,6 +41,13 @@ rrpgmav(n, lambda, mu = 0, sigma = 1)
 Density, distribution function,
 quantile function and random generation for
 the reversal power Gumbel of maximum value distribution with parameters mu, sigma and lambda.
+}
+\details{
+The reversal power Gumbel of maximum value distribution has density
+
+\eqn{f\left(x\right)=\frac{\lambda}{\sigma}\left[e^{-\left(\left(\frac{x-\mu}{\sigma}\right)+e^{-\left(\frac{x-\mu}{\sigma}\right)}\right)}\right]\left[e^{-e^{\left(\frac{x-\mu}{\sigma}\right)}}\right]^{\lambda-1}}{f(x)=[\lambda/\sigma][exp(-(x-\mu)/\sigma-exp(-(x-\mu)/\sigma))][exp(-exp((x-\mu)/\sigma))]^(\lambda-1)},
+
+where \eqn{-\infty<\mu<\infty} is the location paramether, \eqn{\sigma^2>0} the scale parameter and \eqn{\lambda>0} the shape parameter.
 }
 \examples{
 drpgmav(1, 1, 3, 4)
